@@ -5,6 +5,7 @@ public class WallTester : MonoBehaviour
     public GameObject AnchorParentObj;
     public OVRSceneManager SceneManager;
     public GameObject TestCube;
+    public Transform LeftController;
 
     private void Start()
     {
@@ -33,6 +34,30 @@ public class WallTester : MonoBehaviour
                 Debug.Log("Umin wall size" + wall.transform.localScale);
                 Debug.Log("Umin wall pose" + wall.transform.localPosition);
                 Debug.Log("Umin wall rot" + wall.transform.localRotation);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if(OVRInput.GetUp(OVRInput.RawButton.LIndexTrigger))
+        {
+            Vector3 anchorPosition = LeftController.position;
+            Quaternion anchorRotation = LeftController.rotation;
+            RaycastHit hit;
+
+            var lineMaxLength = 1000000.0f;
+
+            if (Physics.Raycast(new Ray(anchorPosition, anchorRotation * Vector3.forward), out hit, lineMaxLength))
+            {
+                GameObject objectHit = hit.transform.gameObject;
+                OVRSemanticClassification classification = objectHit?.GetComponentInParent<OVRSemanticClassification>();
+
+                if (classification != null && classification.Labels?.Count > 0)
+                {
+                    Debug.Log("Umin Ray Input!");
+                    //displayText.text = classification.Labels[0];
+                }
             }
         }
     }
