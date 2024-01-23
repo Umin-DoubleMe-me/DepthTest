@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2634019197476865952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7329915652745048277}
   - component: {fileID: 293350366411920985}
   - component: {fileID: 2342611562642702252}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallPlanePrefabEdit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e93b83e074481a4c99644a6ef0f2526, type: 2}
+  - {fileID: 2100000, guid: 5c389b482cd2faa419dfd0c7d87c47cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

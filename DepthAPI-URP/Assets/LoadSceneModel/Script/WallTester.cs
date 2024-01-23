@@ -7,6 +7,8 @@ public class WallTester : MonoBehaviour
     public GameObject TestCube;
     public Transform LeftController;
 
+    private const float _disOffset = 0.1f;
+
     private void Start()
     {
         Debug.Log("Umin WallTester : awake");
@@ -27,37 +29,12 @@ public class WallTester : MonoBehaviour
             {
                 var tt = Instantiate(TestCube);
                 tt.transform.parent = wall.transform;
-                tt.transform.localPosition = Vector3.zero;
                 tt.transform.localRotation = Quaternion.identity;
+                tt.transform.Rotate(0, 180, 0);
+                tt.transform.localPosition = new Vector3(0, 0, -tt.transform.lossyScale.z / 2 + _disOffset);
                 tt.transform.localScale = Vector3.one;
 
-                Debug.Log("Umin wall size" + wall.transform.localScale);
-                Debug.Log("Umin wall pose" + wall.transform.localPosition);
-                Debug.Log("Umin wall rot" + wall.transform.localRotation);
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if(OVRInput.GetUp(OVRInput.RawButton.LIndexTrigger))
-        {
-            Vector3 anchorPosition = LeftController.position;
-            Quaternion anchorRotation = LeftController.rotation;
-            RaycastHit hit;
-
-            var lineMaxLength = 1000000.0f;
-
-            if (Physics.Raycast(new Ray(anchorPosition, anchorRotation * Vector3.forward), out hit, lineMaxLength))
-            {
-                GameObject objectHit = hit.transform.gameObject;
-                OVRSemanticClassification classification = objectHit?.GetComponentInParent<OVRSemanticClassification>();
-
-                if (classification != null && classification.Labels?.Count > 0)
-                {
-                    Debug.Log("Umin Ray Input!");
-                    //displayText.text = classification.Labels[0];
-                }
+                Debug.Log("Umin wall forward" + wall.transform.forward * -1);
             }
         }
     }
