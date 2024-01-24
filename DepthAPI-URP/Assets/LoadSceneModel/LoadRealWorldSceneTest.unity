@@ -1178,7 +1178,9 @@ MonoBehaviour:
   SceneManager: {fileID: 766428995}
   TestCube: {fileID: 1215508594445317645, guid: 747e5fb71688a794bb927be521a2a6dc,
     type: 3}
+  Mask: {fileID: 6292184690729616357, guid: 02c94ea4c02f97d498f3ed580e653e91, type: 3}
   LeftController: {fileID: 4421429332350097704}
+  TargetSizeWallSmall: 0
 --- !u!4 &1798491150
 Transform:
   m_ObjectHideFlags: 0
